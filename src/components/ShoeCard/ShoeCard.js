@@ -90,7 +90,9 @@ const Link = styled.a`
   color: inherit;
 
   ${Image} {
-    transform: scale(100%);
+    @media (prefers-reduced-motion: no-preference) {
+      transform: scale(100%);
+    }
     filter: contrast(100%);
     transition:
       transform 250ms ease-in,
@@ -101,7 +103,9 @@ const Link = styled.a`
 
   &:hover {
     ${Image} {
-      transform: scale(110%);
+      @media (prefers-reduced-motion: no-preference) {
+        transform: scale(110%);
+      }
       filter: contrast(110%);
       transition:
         transform 100ms ease-out,
