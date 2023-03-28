@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <LinksWrapper>
+            <NavLink href="/sale">Sale</NavLink>
+            <HoverNavLink href="/sale">Sale</HoverNavLink>
+          </LinksWrapper>
+          <LinksWrapper>
+            <NavLink href="/new">New&nbsp;Releases</NavLink>
+            <HoverNavLink href="/new">New&nbsp;Releases</HoverNavLink>
+          </LinksWrapper>
+          <LinksWrapper>
+            <NavLink href="/men">Men</NavLink>
+            <HoverNavLink href="/men">Men</HoverNavLink>
+          </LinksWrapper>
+          <LinksWrapper>
+            <NavLink href="/women">Women</NavLink>
+            <HoverNavLink href="/women">Women</HoverNavLink>
+          </LinksWrapper>
+          <LinksWrapper>
+            <NavLink href="/kids">Kids</NavLink>
+            <HoverNavLink href="/kids">Kids</HoverNavLink>
+          </LinksWrapper>
+          <LinksWrapper>
+            <NavLink href="/collections">Collections</NavLink>
+            <HoverNavLink href="/collections">Collections</HoverNavLink>
+          </LinksWrapper>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -115,14 +133,84 @@ const Filler = styled.div`
 `;
 
 const NavLink = styled.a`
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+`;
 
-  &:first-of-type {
+const HoverNavLink = styled(NavLink)`
+  position: relative;
+  font-weight: ${WEIGHTS.bold};
+`;
+
+const LinksWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  --transition-time: 200ms;
+
+  ${NavLink} {
+    color: var(--color-gray-900);
+    transform: translateY(0%);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--transition-time);
+    }
+  }
+
+  &:first-of-type ${NavLink} {
     color: var(--color-secondary);
+    transform: rotateY(0deg);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--transition-time) var(--transition-time);
+    }
+  }
+
+  ${HoverNavLink} {
+    color: var(--color-gray-900);
+    transform: translateY(100%);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--transition-time);
+    }
+  }
+
+  &:first-of-type ${HoverNavLink} {
+    color: var(--color-secondary);
+    transform: rotateY(90deg);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--transition-time);
+    }
+  }
+
+  &:hover {
+    ${NavLink} {
+      transform: translateY(-100%);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--transition-time);
+      }
+    }
+    &:first-of-type ${NavLink} {
+      transform: rotateY(-90deg);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--transition-time);
+      }
+    }
+    ${HoverNavLink} {
+      transform: translateY(0%);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--transition-time);
+      }
+    }
+    &:first-of-type ${HoverNavLink} {
+      transform: rotateY(0deg);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--transition-time) var(--transition-time);
+      }
+    }
   }
 `;
 
