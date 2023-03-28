@@ -34,13 +34,16 @@ const ShoeCard = ({
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
-        <ImageWrapper>
-          <Image alt="" src={imageSrc} />
+        <FlagWrapper>
+          <ImageWrapper>
+            <Image alt="" src={imageSrc} />
+          </ImageWrapper>
           {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
-          {variant === 'new-release' && (
-            <NewFlag>Just released!</NewFlag>
-          )}
-        </ImageWrapper>
+            {variant === 'new-release' && (
+              <NewFlag>Just released!</NewFlag>
+            )
+          }
+        </FlagWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -68,20 +71,48 @@ const ShoeCard = ({
   );
 };
 
-const Link = styled.a`
-  text-decoration: none;
-  color: inherit;
-`;
-
 const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
+  border-radius: 16px 16px 4px 4px;
+  overflow: hidden;
 `;
 
 const Image = styled.img`
   width: 100%;
-  border-radius: 16px 16px 4px 4px;
+  /* Remove whitespace so zooms don't add any space to the image */
+  vertical-align: bottom;
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  color: inherit;
+
+  ${Image} {
+    transform: scale(100%);
+    filter: contrast(100%);
+    transition:
+      transform 250ms ease-in,
+      filter 250ms ease-in;
+    transform-origin: center 140px;
+  }
+
+
+  &:hover {
+    ${Image} {
+      transform: scale(110%);
+      filter: contrast(110%);
+      transition:
+        transform 100ms ease-out,
+        filter 100ms ease-out;
+      transform-origin: center 140px;
+    }
+  }
+`;
+
+const FlagWrapper = styled.div`
+  position: relative;
 `;
 
 const Row = styled.div`
