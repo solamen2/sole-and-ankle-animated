@@ -85,7 +85,7 @@ const Content = styled(DialogContent)`
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    animation: slide-in 500ms cubic-bezier(.57,0,.43,1);
+    animation: slide-in 500ms cubic-bezier(.57,0,.43,1) backwards;
   }
 `;
 
