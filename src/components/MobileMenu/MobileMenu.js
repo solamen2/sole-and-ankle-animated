@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
 import { QUERIES, WEIGHTS } from '../../constants';
@@ -36,6 +36,33 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   );
 };
 
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    background: var(--color-black);
+  }
+  to {
+    background: var(--color-backdrop);
+  }
+`;
+
+const fadeInLink = keyframes`
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+`;
+
 const Overlay = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -46,25 +73,7 @@ const Overlay = styled(DialogOverlay)`
   justify-content: flex-end;
   background: var(--color-backdrop);
 
-  @keyframes fade-in {
-    from {
-      background: var(--color-black);
-    }
-    to {
-      background: var(--color-backdrop);
-    }
-  }
-
-  animation: fade-in 500ms cubic-bezier(.57,0,.43,1);
-
-  @keyframes fade-in-link {
-    from {
-      opacity: 0%;
-    }
-    to {
-      opacity: 100%;
-    }
-  }
+  animation: ${fadeIn} 500ms cubic-bezier(.57,0,.43,1);
 `;
 
 const Content = styled(DialogContent)`
@@ -75,17 +84,8 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
 
-  @keyframes slide-in {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0%);
-    }
-  }
-
   @media (prefers-reduced-motion: no-preference) {
-    animation: slide-in 500ms cubic-bezier(.57,0,.43,1) backwards;
+    animation: ${slideIn} 500ms cubic-bezier(.57,0,.43,1) backwards;
   }
 `;
 
@@ -114,7 +114,7 @@ const NavLink = styled.a`
     color: var(--color-secondary);
   }
 
-  animation: fade-in-link 500ms backwards;
+  animation: ${fadeInLink} 500ms backwards;
   animation-delay: calc(var(--nth-child) * 75ms);
 `;
 
@@ -144,7 +144,7 @@ const SubLink = styled.a`
   :nth-child(2) { --nth-child: 8 }
   :nth-child(3) { --nth-child: 9 }
 
-  animation: fade-in-link 500ms backwards;
+  animation: ${fadeInLink} 500ms backwards;
   animation-delay: calc(var(--nth-child) * 100ms);
   
 `;

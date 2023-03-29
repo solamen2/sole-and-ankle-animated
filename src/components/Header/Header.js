@@ -22,27 +22,27 @@ const Header = () => {
         <DesktopNav>
           <LinksWrapper>
             <NavLink href="/sale">Sale</NavLink>
-            <HoverNavLink href="/sale">Sale</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/sale">Sale</HoverNavLink>
           </LinksWrapper>
           <LinksWrapper>
             <NavLink href="/new">New&nbsp;Releases</NavLink>
-            <HoverNavLink href="/new">New&nbsp;Releases</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/new">New&nbsp;Releases</HoverNavLink>
           </LinksWrapper>
           <LinksWrapper>
             <NavLink href="/men">Men</NavLink>
-            <HoverNavLink href="/men">Men</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/men">Men</HoverNavLink>
           </LinksWrapper>
           <LinksWrapper>
             <NavLink href="/women">Women</NavLink>
-            <HoverNavLink href="/women">Women</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/women">Women</HoverNavLink>
           </LinksWrapper>
           <LinksWrapper>
             <NavLink href="/kids">Kids</NavLink>
-            <HoverNavLink href="/kids">Kids</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/kids">Kids</HoverNavLink>
           </LinksWrapper>
           <LinksWrapper>
             <NavLink href="/collections">Collections</NavLink>
-            <HoverNavLink href="/collections">Collections</HoverNavLink>
+            <HoverNavLink aria-hidden={true} href="/collections">Collections</HoverNavLink>
           </LinksWrapper>
         </DesktopNav>
         <MobileActions>

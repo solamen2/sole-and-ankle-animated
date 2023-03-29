@@ -97,11 +97,14 @@ const Link = styled.a`
     transition:
       transform 250ms ease-in,
       filter 250ms ease-in;
-    transform-origin: center 140px;
+    transform-origin: center 75%;
+
+    will-change: transform, filter;
   }
 
 
-  &:hover {
+  &:hover,
+  &:focus {
     ${Image} {
       @media (prefers-reduced-motion: no-preference) {
         transform: scale(110%);
@@ -110,7 +113,7 @@ const Link = styled.a`
       transition:
         transform 100ms ease-out,
         filter 100ms ease-out;
-      transform-origin: center 140px;
+      transform-origin: center 75%;
     }
   }
 `;
